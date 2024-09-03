@@ -5,22 +5,14 @@ import {
 	initialWindowMetrics,
 	SafeAreaProvider,
 } from "react-native-safe-area-context";
-
-// import { useSafeAreaEnv } from "nativewind";
-import { useSafeAreaEnv } from "react-native-css-interop/dist/runtime/api";
+import { useSafeAreaEnv } from "nativewind";
 
 export default function Layout() {
 	return (
 		<SafeAreaProvider initialMetrics={initialWindowMetrics}>
-			<MyComp />
+			<View style={[{ flex: 1 }, useSafeAreaEnv()]}>
+				<Stack screenOptions={{ headerShown: false }} />
+			</View>
 		</SafeAreaProvider>
-	);
-}
-
-function MyComp() {
-	return (
-		<View style={[{ flex: 1 }, useSafeAreaEnv()]}>
-			<Stack screenOptions={{ headerShown: false }} />
-		</View>
 	);
 }
